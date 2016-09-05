@@ -25,7 +25,10 @@ A MEAN stack application derived from Angular-Phonecat and Node-Auth projects
 
 
 ## License
+
 (The MIT License)
+
+Copyright (c) 2016 Amir Mustafa
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
