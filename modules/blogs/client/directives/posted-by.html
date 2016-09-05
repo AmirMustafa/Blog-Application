@@ -1,0 +1,7 @@
+<small class="list-group-item-text">
+        Posted on
+        <span data-ng-bind="blog.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-if="blog.user" data-ng-bind="blog.user.displayName"></span>
+        <span data-ng-if="!blog.user">Deleted User</span>
+</small>

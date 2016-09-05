@@ -1,0 +1,103 @@
+<section>
+  <div class="page-header">
+  </div>
+  <div class="pull-right"
+       data-ng-show="vm.blog.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       data-ui-sref="blogs.edit({ blogId: vm.blog._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" data-ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div class="pull-right" data-ng-show="vm.authentication.user.roles.indexOf('admin') > -1">
+    <a class="btn btn-primary" data-ng-click="vm.approve()"><span class="glyphicon glyphicon-ok"></span></a>
+    <a class="btn btn-warning" data-ng-click="vm.reject()"><span class="glyphicon glyphicon-remove"></span></a>
+  </div>
+  <div class="pull-right" data-ng-show="vm.authentication.user.roles === undefined">
+    <a href=""
+      socialshare
+      socialshare-provider="twitter"
+      socialshare-text={{vm.blog.title}}
+      socialshare-hashtags="angularjs, angular-socialshare"
+      socialshare-url={{vm.purl}}>
+      <img src="modules/blogs/client/img/twitter.png" style="height:30px">
+    </a>
+    <a href=""
+      socialshare
+      socialshare-provider="facebook"
+      socialshare-text={{vm.blog.title}}
+      socialshare-hashtags="angularjs, angular-socialshare"
+      socialshare-url={{vm.purl}}>
+      <img src="modules/blogs/client/img/fb.png" style="height:30px">
+    </a>  
+    <a href=""
+      socialshare
+      socialshare-provider="linkedin"
+      socialshare-text={{vm.blog.title}}
+      socialshare-hashtags="angularjs, angular-socialshare"
+      socialshare-url={{vm.purl}}>
+      <img src="modules/blogs/client/img/linkedin.png" style="height:30px">
+    </a>      
+  </div>
+  <small data-ng-show="vm.authentication.user.roles.indexOf('admin') > -1">
+    <p>Status:<span ng-class="{cgstatus: vm.blog.status == 'approved', crstatus: vm.blog.status != 'approved'}">{{vm.blog.status}}</span></p>
+  </small>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span data-ng-bind="vm.blog.created | date:'mediumDate'"></span>
+      by
+      <span data-ng-if="vm.blog.user"
+            data-ng-bind="vm.blog.user.displayName"></span>
+      <span data-ng-if="!vm.blog.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" data-ng-bind="vm.blog.content"></p>
+
+  <hr/>
+  <h3>Comments({{vm.blog.comments.length}})</h3>
+  <div class="col-md-12" ng-repeat="comment in vm.blog.comments">
+    <div class="col-md-12">
+      <small data-ng-show="vm.authentication.user.roles.indexOf('admin') > -1"><p>Status:<span ng-class="{cgstatus: comment.status == 'approved', crstatus: comment.status != 'approved'}">{{comment.status}}</span></p></small>
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-4"><small style="font-style:italic">Posted by:</small> {{comment.name}}</div>
+      <div class="col-md-4"><p>{{comment.created | date:'mediumDate'}}</p></div>
+      <div class="col-md-4" data-ng-show="vm.authentication.user.roles.indexOf('admin') > -1">
+        <a class="btn btn-primary" data-ng-click="vm.a_comment(comment._id)"><span class="glyphicon glyphicon-ok"></span></a>
+        <a class="btn btn-warning" data-ng-click="vm.r_comment(comment._id)"><span class="glyphicon glyphicon-remove"></span></a>
+      </div>
+    </div>
+    <div class="col-md-12"><div class="col-md-12"><p>{{comment.content}}</p><hr/></div></div>    
+  </div>
+
+  <h4 style="margin-top:70px!important" ng-show="vm.authentication.user.roles === undefined">Add your comments</h4>
+
+  <form name="vm.form.commentForm" class="form-horizontal col-md-12" ng-submit="vm.addcomment(vm.form.commentForm.$valid)" novalidate ng-show="vm.authentication.user.roles === undefined">
+      <fieldset>
+        <div class="form-group col-md-4" show-errors>
+          <label class="control-label" for="name">Your Name</label>
+          <input name="name" type="text" ng-model="vm.comment.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.commentForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Name is required.</p>
+          </div>
+        </div>
+        <div class="form-group col-md-12" show-errors>
+          <label for="comment">Comments</label>
+          <textarea name="comment" ng-model="vm.comment.ucomment" id="comment" class="form-control" cols="10" rows="3" placeholder="Comment" required></textarea>
+          <div ng-messages="vm.form.commentForm.comment.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Comment is required.</p>
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+  </form>
+
+</section>
