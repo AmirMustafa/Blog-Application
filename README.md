@@ -16,7 +16,7 @@ A MEAN stack application derived from Angular-Phonecat and Node-Auth projects
 2. Install the application: `npm install`
 3. Install the bower components: `bower install`
 3. Place your own MongoDB URI in `config/database.js` 
-4. Run `mongod` in Terminal at Root Level of your Installed Directory
+4. Run `mongod` in the Terminal at Root Level of your Installed Directory of MongoDB
 3. Start the server: `node server.js`	
 4. Run `grunt / grunt --force` in Terminal in this Cloned Project Path 
 4. View in browser at `http://localhost:3000`
