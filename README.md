@@ -4,7 +4,9 @@
 
 Blog Application  Project is developed in End to End JavaScript. The technologies used are MongoDB, Express JS, Angular JS and Node JS (i.e. MEAN Stack). So basically in this project firstly there is admin and multiple users.  Sign Up the form to create the user. For the first user change roles in MongoDB from user to admin and you can create user similarly.
 User has facility to Create, Read, Update and Delete the Blog. Once the blog is created it will display in the general user (i.e. signed out case) once approved by the Admin.
+
 Admin has facility to approve , reject the blog. The general user can comment on individual blog. Once again Admin can approve or reject the comment. Websockets are used to give instant messages to the user or admin  as per changes made. Messages are used to show by using growl concept.
+
 Front End Development is done on Angular JS, Back End in Node JS and Express JS and Database used is MongoDB.
 
 ## Requirements
