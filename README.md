@@ -7,7 +7,7 @@ User has facility to Create, Read, Update and Delete the Blog. Once the blog is 
 
 Admin has facility to approve , reject the blog. The general user can comment on individual blog. Once again Admin can approve or reject the comment. Websockets are used to give instant messages to the user or admin  as per changes made. Messages are used to show by using growl concept.
 
-Front End Development is done on Angular JS, Back End Development in Node JS and Express JS and Database used is MongoDB.
+Front End Development is done in Angular JS, Back End Development in Node JS and Express JS and Database used is MongoDB.
 
 ## Requirements
 
